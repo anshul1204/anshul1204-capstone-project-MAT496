@@ -1,0 +1,118 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Entity Schema",
+  "description": "Schema for entity objects in the knowledge base",
+  "type": "object",
+  "required": ["id", "name", "category", "attributes"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the entity",
+      "pattern": "^(person|character|animal|place|object)_[0-9]{4}$",
+      "examples": ["person_0001", "character_0042"]
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name of the entity",
+      "minLength": 1,
+      "examples": ["Albert Einstein", "Harry Potter"]
+    },
+    "category": {
+      "type": "string",
+      "description": "Category of the entity",
+      "enum": ["person", "character", "animal", "place", "object"]
+    },
+    "attributes": {
+      "type": "object",
+      "description": "Key-value pairs describing entity characteristics",
+      "additionalProperties": true,
+      "examples": [
+        {
+          "is_real": true,
+          "is_alive": false,
+          "gender": "male",
+          "occupation": "scientist"
+        }
+      ]
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Metadata about entity performance and learning",
+      "properties": {
+        "games_played": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total number of games featuring this entity"
+        },
+        "games_won": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of times successfully guessed"
+        },
+        "win_rate": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Success rate (games_won / games_played)"
+        },
+        "avg_questions_needed": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Average questions needed to guess correctly"
+        },
+        "last_updated": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp of last update"
+        },
+        "learned_from_user": {
+          "type": "boolean",
+          "description": "Whether this entity was added by user learning",
+          "default": false
+        }
+      }
+    },
+    "aliases": {
+      "type": "array",
+      "description": "Alternative names for this entity",
+      "items": {
+        "type": "string"
+      },
+      "examples": [["Einstein", "Al Einstein"]]
+    },
+    "description": {
+      "type": "string",
+      "description": "Optional brief description of the entity"
+    }
+  },
+  "examples": [
+    {
+      "id": "person_0001",
+      "name": "Albert Einstein",
+      "category": "person",
+      "attributes": {
+        "is_real": true,
+        "is_alive": false,
+        "gender": "male",
+        "occupation": "scientist",
+        "field": "physics",
+        "nationality": "german",
+        "has_nobel_prize": true,
+        "famous_for": "relativity",
+        "time_period": "20th_century",
+        "has_distinctive_hair": true,
+        "is_mathematician": true
+      },
+      "metadata": {
+        "games_played": 0,
+        "games_won": 0,
+        "win_rate": 0.0,
+        "avg_questions_needed": 0,
+        "last_updated": "2024-12-02T00:00:00Z",
+        "learned_from_user": false
+      },
+      "aliases": ["Einstein", "The Einstein"],
+      "description": "Theoretical physicist who developed the theory of relativity"
+    }
+  ]
+}

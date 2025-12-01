@@ -1,0 +1,37 @@
+# Example entity file for reference
+# This shows the structure of entity JSON files in the knowledge_base
+
+{
+    "id": "person_0001",
+    "name": "Albert Einstein",
+    "category": "person",
+    "attributes": {
+        "is_real": true,
+        "is_alive": false,
+        "gender": "male",
+        "occupation": "scientist",
+        "field": "physics",
+        "nationality": "german",
+        "has_nobel_prize": true,
+        "famous_for": "relativity",
+        "time_period": "20th_century",
+        "has_distinctive_hair": true,
+        "is_mathematician": true,
+        "wears_glasses": true,
+        "is_historical_figure": true
+    },
+    "metadata": {
+        "games_played": 0,
+        "games_won": 0,
+        "win_rate": 0.0,
+        "avg_questions_needed": 0,
+        "last_updated": "2024-12-02T00:00:00Z",
+        "learned_from_user": false
+    },
+    "aliases": [
+        "Einstein",
+        "The Einstein",
+        "Al Einstein"
+    ],
+    "description": "Theoretical physicist who developed the theory of relativity, one of the two pillars of modern physics"
+}
